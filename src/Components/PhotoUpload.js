@@ -1,10 +1,9 @@
 // src/Components/PhotoUpload.js
-import React, { useState, useRef } from "react";
-import { storage, db } from "../firebase";
-import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { Box, Button, TextField, Typography, Paper } from "@mui/material";
+import { Box, Button, Paper, TextField, Typography } from "@mui/material";
+import { ref as storageRef, uploadBytes } from "firebase/storage";
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { storage } from "../firebase";
 
 export default function PhotoUpload() {
   const [file, setFile] = useState(null);

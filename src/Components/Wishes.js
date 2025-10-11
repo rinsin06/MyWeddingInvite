@@ -1,8 +1,8 @@
 // src/Components/Wishes.js
-import React, { useState, useEffect } from "react";
+import { Box, Button, Paper, Stack, TextField, Typography } from "@mui/material";
+import { addDoc, collection, getDocs, serverTimestamp } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { collection, addDoc, getDocs, serverTimestamp } from "firebase/firestore";
-import { Box, TextField, Button, Typography, Paper, Stack } from "@mui/material";
 
 export default function Wishes() {
   const [name, setName] = useState("");

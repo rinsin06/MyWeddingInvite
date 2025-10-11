@@ -1,6 +1,5 @@
 // src/App.js
-import React from "react";
-import { Box, Typography, Button, Container, Divider, Paper } from "@mui/material";
+import { Box, Button, Container, Divider, Paper, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import PhotoUpload from "./Components/PhotoUpload";
 import Wishes from "./Components/Wishes";
