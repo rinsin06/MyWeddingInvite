@@ -1,12 +1,13 @@
-// src/App.js
 import { Box, Button, Container, Divider, Paper, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import PhotoUpload from "./Components/PhotoUpload";
 import Wishes from "./Components/Wishes";
+import InviteSection from "./Components/InviteSection";
+import VenueCarousel from "./Components/VenueCarousel";
 
 export default function App() {
   return (
-    <Box sx={{ fontFamily: "Roboto, sans-serif" }}>
+    <Box sx={{ fontFamily: "Inter, 'Playfair Display', serif", backgroundColor: "#FFFFFF" }}>
       {/* HERO SECTION */}
       <Box sx={{ position: "relative", minHeight: "100vh" }}>
         {/* Background Image */}
@@ -17,15 +18,15 @@ export default function App() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage:
-             `url("/pexels-annetnavi-792777.jpg")`,
+            backgroundImage: `url("/pexels-annetnavi-792777.jpg")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             zIndex: 0,
+            filter: "grayscale(30%) brightness(0.8)",
           }}
         />
 
-        {/* Gradient Overlay */}
+        {/* Elegant Overlay */}
         <Box
           sx={{
             position: "absolute",
@@ -33,7 +34,7 @@ export default function App() {
             left: 0,
             width: "100%",
             height: "100%",
-            background: "linear-gradient(to bottom right, rgba(0,0,0,0.7), rgba(255,192,203,0.3))",
+            background: "linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(47,58,86,0.4))",
             zIndex: 1,
           }}
         />
@@ -43,7 +44,7 @@ export default function App() {
           maxWidth="md"
           sx={{
             position: "relative",
-            zIndex: 2, // Above overlay
+            zIndex: 2,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -54,8 +55,8 @@ export default function App() {
         >
           <motion.div initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
             <Typography
-              variant="h4"
-              sx={{ mb: 2, fontWeight: 300, letterSpacing: 2, color: "rgba(255,255,255,0.9)" }}
+              variant="h5"
+              sx={{ mb: 2, fontWeight: 300, letterSpacing: 3, color: "rgba(255,255,255,0.85)" }}
             >
               Together Forever
             </Typography>
@@ -65,10 +66,10 @@ export default function App() {
             <Typography
               variant="h1"
               sx={{
-                fontFamily: "'Dancing Script', cursive",
+                fontFamily: "'Playfair Display', serif",
                 fontSize: { xs: "3rem", md: "6rem" },
-                color: "#FFB6C1",
-                textShadow: "2px 2px 20px rgba(0,0,0,0.6)",
+                color: "#D4AF37",
+                textShadow: "1px 1px 15px rgba(0,0,0,0.5)",
               }}
             >
               Rinsin & Riya
@@ -81,140 +82,62 @@ export default function App() {
             transition={{ delay: 1, duration: 1 }}
             style={{ display: "flex", alignItems: "center", gap: 24, marginTop: 24 }}
           >
-            <Typography variant="h6" sx={{ fontWeight: 600, color: "#FFE4E1" }}>
+            <Typography variant="h6" sx={{ fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
               DECEMBER
             </Typography>
-            <Typography variant="h2" sx={{ fontWeight: "bold", color: "#FF69B4" }}>
+            <Typography variant="h2" sx={{ fontWeight: "bold", color: "#D4AF37" }}>
               29
             </Typography>
-            <Typography variant="h6" sx={{ fontWeight: 600, color: "#FFE4E1" }}>
+            <Typography variant="h6" sx={{ fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
               2025
             </Typography>
           </motion.div>
 
-          {/* Venue Section */}
-          <Box sx={{ textAlign: "center", mt: 6 }}>
-            <Typography
-              variant="h4"
-              sx={{
-                fontFamily: "'Dancing Script', cursive",
-                color: "#FFD1DC",
-                textShadow: "1px 1px 5px rgba(0,0,0,0.3)",
-                mb: 1,
-              }}
-            >
-              Venue
-            </Typography>
+          {/* Subtext */}
+          <Typography
+            variant="body1"
+            sx={{
+              mt: 3,
+              color: "rgba(255,255,255,0.85)",
+              fontStyle: "italic",
+              maxWidth: "600px",
+            }}
+          >
+            “We can’t wait to celebrate our forever with you.”
+          </Typography>
 
-            <Typography
-              variant="h6"
-              sx={{
-                color: "rgba(255,255,255,0.9)",
-                fontWeight: 500,
-                mb: 3,
-              }}
-            >
-              Thekum Bhagom, Kollam
-            </Typography>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              <Box
-                sx={{
-                  position: "relative",
-                  width: "100%",
-                  maxWidth: 650,
-                  mx: "auto",
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  boxShadow: "0 10px 25px rgba(255,182,193,0.4)",
-                }}
-              >
-                <img
-                  src="https://maps.googleapis.com/maps/api/staticmap?center=Thekum+Bhagom+Kollam&zoom=15&size=700x350&scale=2&maptype=roadmap&markers=color:pink%7Clabel:L%7CThekum+Bhagom+Kollam&key=YOUR_API_KEY"
-                  alt="Venue Map"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    filter: "grayscale(10%) brightness(1.1)",
-                  }}
-                />
-
-                <Box
-                  sx={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6))",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      background: "linear-gradient(135deg, #FFB6C1, #FF69B4)",
-                      color: "#fff",
-                      fontWeight: 600,
-                      textTransform: "none",
-                      px: 4,
-                      py: 1.5,
-                      borderRadius: "30px",
-                      boxShadow: "0 4px 12px rgba(255,182,193,0.6)",
-                      "&:hover": {
-                        background: "linear-gradient(135deg, #FF8FAB, #FF69B4)",
-                      },
-                    }}
-                    onClick={() =>
-                      window.open(
-                        "https://share.google/YLAJ5qtzS1PVd5pDf",
-                        "_blank"
-                      )
-                    }
-                  >
-                    💖 View Location
-                  </Button>
-                </Box>
-              </Box>
-            </motion.div>
-
-            <Typography
-              variant="body2"
-              sx={{
-                mt: 2,
-                color: "rgba(255,255,255,0.8)",
-                fontStyle: "italic",
-              }}
-            >
-              Come celebrate this special day with us 🌸
-            </Typography>
-          </Box>
-
-
-          <motion.div whileHover={{ scale: 1.08 }} style={{ marginTop: 32 }}>
+          {/* CTA Button */}
+          <motion.div whileHover={{ scale: 1.05 }} style={{ marginTop: 40 }}>
             <Button
               href="#wishes"
               variant="contained"
               sx={{
-                background: "linear-gradient(45deg, #FF69B4, #FFB6C1)",
-                color: "white",
+                background: "linear-gradient(45deg, #D4AF37, #EADCA6)",
+                color: "#2F3A56",
                 px: 6,
-                py: 1.5,
-                borderRadius: "50px",
+                py: 1.4,
+                borderRadius: "40px",
                 fontWeight: "bold",
-                boxShadow: "0 6px 20px rgba(255,105,180,0.5)",
+                fontSize: "1rem",
+                letterSpacing: 1,
+                boxShadow: "0 6px 20px rgba(212,175,55,0.3)",
                 transition: "all 0.3s ease",
-                "&:hover": { boxShadow: "0 8px 25px rgba(255,105,180,0.7)" },
+                "&:hover": {
+                  background: "linear-gradient(45deg, #E6D28A, #C9A74A)",
+                  boxShadow: "0 8px 25px rgba(212,175,55,0.5)",
+                },
               }}
             >
-              RSVP / Send Wishes
+              Send Wishes
             </Button>
           </motion.div>
         </Container>
+      </Box>
+
+      {/* INVITE & VENUE SECTIONS */}
+      <Box sx={{ backgroundColor: "#FFFFFF", py: 8 }}>
+        <InviteSection />
+        <VenueCarousel />
       </Box>
 
       {/* WISHES & PHOTOS SECTION */}
@@ -223,8 +146,8 @@ export default function App() {
         sx={{
           position: "relative",
           zIndex: 2,
-          backgroundColor: "#FFF0F5",
-          color: "text.primary",
+          backgroundColor: "#F8F8F9",
+          color: "#1E1E1E",
           py: { xs: 8, md: 12 },
         }}
       >
@@ -232,10 +155,10 @@ export default function App() {
           <Typography
             variant="h4"
             sx={{
-              fontWeight: "bold",
+              fontWeight: 700,
               mb: 6,
-              color: "#FF69B4",
-              textShadow: "1px 1px 5px rgba(0,0,0,0.1)",
+              color: "#2F3A56",
+              fontFamily: "'Playfair Display', serif",
             }}
           >
             Share Your Memories & Wishes
@@ -248,13 +171,14 @@ export default function App() {
               p: 4,
               mb: 6,
               borderRadius: "20px",
-              background: "linear-gradient(145deg, #FFE4E1, #FFF0F5)",
+              background: "linear-gradient(145deg, #FFFFFF, #F3F3F3)",
+              boxShadow: "0 5px 25px rgba(0,0,0,0.05)",
             }}
           >
             <PhotoUpload />
           </Paper>
 
-          <Divider sx={{ my: 6 }} />
+          <Divider sx={{ my: 6, borderColor: "#D4AF37", width: "50%", mx: "auto" }} />
 
           {/* Wishes */}
           <Paper
@@ -262,7 +186,8 @@ export default function App() {
             sx={{
               p: 4,
               borderRadius: "20px",
-              background: "linear-gradient(145deg, #FFF0F5, #FFE4E1)",
+              background: "linear-gradient(145deg, #FFFFFF, #F4F4F4)",
+              boxShadow: "0 5px 25px rgba(0,0,0,0.05)",
             }}
           >
             <Wishes />

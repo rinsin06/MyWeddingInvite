@@ -26,21 +26,14 @@ export default function PhotoUpload() {
       const uniqueName = `${Date.now()}_${file.name.replace(/\s+/g, "_")}`;
       const sRef = storageRef(storage, `photos/${uniqueName}`);
       await uploadBytes(sRef, file);
-      // const url = await getDownloadURL(sRef);
 
-      // await addDoc(collection(db, "photos"), {
-      //   name: name.trim(),
-      //   url,
-      //   createdAt: serverTimestamp(),
-      // });
-
-      alert("Photo uploaded!");
+      alert("Photo uploaded successfully!");
       setName("");
       setFile(null);
       if (inputRef.current) inputRef.current.value = "";
     } catch (err) {
       console.error("Upload error:", err);
-      alert("Upload failed — check console for details.");
+      alert("Upload failed — please check console for details.");
     } finally {
       setUploading(false);
     }
@@ -48,19 +41,25 @@ export default function PhotoUpload() {
 
   return (
     <Paper
-      elevation={6}
+      elevation={8}
       sx={{
         p: 4,
-        maxWidth: 450,
+        maxWidth: 480,
         mx: "auto",
-        borderRadius: 3,
-        background: "linear-gradient(145deg, #FFE4E1, #FFF0F5)",
+        borderRadius: 4,
+        background: "linear-gradient(145deg, #FFFFFF, #F8F8F8)",
         textAlign: "center",
+        boxShadow: "0 4px 30px rgba(0,0,0,0.08)",
       }}
     >
       <Typography
         variant="h5"
-        sx={{ mb: 3, fontWeight: 600, color: "#FF69B4" }}
+        sx={{
+          mb: 3,
+          fontWeight: 600,
+          color: "#2F3A56",
+          fontFamily: "'Playfair Display', serif",
+        }}
       >
         Upload Your Photo 📸
       </Typography>
@@ -71,7 +70,13 @@ export default function PhotoUpload() {
         fullWidth
         value={name}
         onChange={(e) => setName(e.target.value)}
-        sx={{ mb: 3 }}
+        sx={{
+          mb: 3,
+          "& .MuiOutlinedInput-root": {
+            borderRadius: 3,
+            backgroundColor: "white",
+          },
+        }}
       />
 
       <Box sx={{ position: "relative", mb: 3 }}>
@@ -81,11 +86,14 @@ export default function PhotoUpload() {
           sx={{
             py: 1.5,
             fontWeight: "bold",
-            background: "linear-gradient(45deg, #FF69B4, #FFB6C1)",
-            color: "white",
-            borderRadius: 2,
-            boxShadow: "0 4px 15px rgba(255,105,180,0.4)",
-            "&:hover": { boxShadow: "0 6px 20px rgba(255,105,180,0.6)" },
+            borderRadius: 3,
+            background: "linear-gradient(45deg, #EDEDED, #D4AF37)",
+            color: "#1C1C1E",
+            boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+            "&:hover": {
+              background: "linear-gradient(45deg, #D4AF37, #EDEDED)",
+              boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+            },
           }}
         >
           Choose File
@@ -109,11 +117,11 @@ export default function PhotoUpload() {
 
       {file && (
         <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <Typography sx={{ mb: 3 }}>{file.name}</Typography>
+          <Typography sx={{ mb: 3, color: "#555" }}>{file.name}</Typography>
         </motion.div>
       )}
 
@@ -125,11 +133,14 @@ export default function PhotoUpload() {
         sx={{
           py: 1.5,
           fontWeight: "bold",
-          background: "linear-gradient(45deg, #FFB6C1, #FF69B4)",
+          borderRadius: 3,
+          background: "linear-gradient(45deg, #D4AF37, #B8860B)",
           color: "white",
-          borderRadius: 2,
-          boxShadow: "0 6px 20px rgba(255,105,180,0.5)",
-          "&:hover": { boxShadow: "0 8px 25px rgba(255,105,180,0.7)" },
+          boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+          "&:hover": {
+            background: "linear-gradient(45deg, #B8860B, #D4AF37)",
+            boxShadow: "0 8px 25px rgba(0,0,0,0.2)",
+          },
         }}
       >
         {uploading ? "Uploading..." : "Upload"}
