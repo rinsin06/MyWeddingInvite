@@ -82,6 +82,54 @@ export default function Wishes() {
         boxShadow: "0 4px 25px rgba(0,0,0,0.05)",
       }}
     >
+    
+
+      {/* Display Wishes */}
+      <Box
+        sx={{
+          textAlign: "left",
+          px: 1,
+          maxHeight: "400px",
+          overflowY: "auto",
+        }}
+      >
+        {wishes.length === 0 ? (
+          <Typography sx={{ color: "#777", textAlign: "center",fontFamily: "'Great Vibes', cursive", }}>
+            No wishes yet. Be the first to share your blessing! ✨
+          </Typography>
+        ) : (
+          wishes.map((w) => (
+            <Paper
+              key={w.id}
+              elevation={0}
+              sx={{
+                p: 2.5,
+                mb: 2,
+                borderRadius: 3,
+                background: "#FAFAFA",
+                border: "1px solid rgba(201,167,74,0.25)",
+                boxShadow: "0 1px 6px rgba(0,0,0,0.04)",
+                transition: "transform 0.2s ease",
+                "&:hover": { transform: "translateY(-2px)" },
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "#3A3A3A",
+                  fontFamily: "'Poppins', sans-serif",
+                  fontWeight: "bold",
+                  mb: 0.5,
+                }}
+              >
+                {w.name}
+              </Typography>
+              <Typography sx={{ color: "#6B6B6B",fontFamily: "'Great Vibes', cursive", }}>{w.wish}</Typography>
+            </Paper>
+          ))
+        )}
+      </Box>
+
+        <Divider sx={{ my: 4 }} />
       {/* Add Wish & Share Memories Buttons */}
       <Stack
         direction={{ xs: "column", sm: "row" }}
@@ -132,52 +180,7 @@ export default function Wishes() {
         </Button>
       </Stack>
 
-      <Divider sx={{ my: 4 }} />
-
-      {/* Display Wishes */}
-      <Box
-        sx={{
-          textAlign: "left",
-          px: 1,
-          maxHeight: "400px",
-          overflowY: "auto",
-        }}
-      >
-        {wishes.length === 0 ? (
-          <Typography sx={{ color: "#777", textAlign: "center",fontFamily: "'Great Vibes', cursive", }}>
-            No wishes yet. Be the first to share your blessing! ✨
-          </Typography>
-        ) : (
-          wishes.map((w) => (
-            <Paper
-              key={w.id}
-              elevation={0}
-              sx={{
-                p: 2.5,
-                mb: 2,
-                borderRadius: 3,
-                background: "#FAFAFA",
-                border: "1px solid rgba(201,167,74,0.25)",
-                boxShadow: "0 1px 6px rgba(0,0,0,0.04)",
-                transition: "transform 0.2s ease",
-                "&:hover": { transform: "translateY(-2px)" },
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "#3A3A3A",
-                  fontFamily: "'Poppins', sans-serif",
-                  fontWeight: "bold",
-                  mb: 0.5,
-                }}
-              >
-                {w.name}
-              </Typography>
-              <Typography sx={{ color: "#6B6B6B",fontFamily: "'Great Vibes', cursive", }}>{w.wish}</Typography>
-            </Paper>
-          ))
-        )}
-      </Box>
+      
 
       {/* Wish Popup */}
       <Dialog

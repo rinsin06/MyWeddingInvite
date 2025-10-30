@@ -27,7 +27,7 @@ export default function App() {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url("wedding.jpg")`,
+            backgroundImage: `url("wedding2.png")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "grayscale(25%) brightness(0.85)",

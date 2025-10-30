@@ -170,7 +170,8 @@ const VenueCarouselMUI = () => {
                     variant="body2"
                     sx={{
                       color: "#666",
-                      fontFamily: "'Great Vibes', cursive",
+                       fontSize:"1.0rem",
+                     fontFamily: "'Playfair Display', serif",
                       mb: 0.5,
                     }}
                   >
@@ -180,6 +181,7 @@ const VenueCarouselMUI = () => {
                     variant="body2"
                     sx={{
                       color: "#666",
+                      fontSize:"1.4rem",
                       fontFamily: "'Great Vibes', cursive",
                     }}
                   >

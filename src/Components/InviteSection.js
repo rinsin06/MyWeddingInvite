@@ -59,7 +59,7 @@ const InviteSection = () => {
               color: "#5d4037",
               fontFamily: "'Great Vibes', cursive",
               lineHeight: 1.8,
-              fontSize: { xs: "1.2rem", md: "1.2rem" },
+              fontSize: { xs: "1.4rem", md: "1.4rem" },
               maxWidth: "500px",
               mx: { xs: "auto", md: 0 },
             }}
