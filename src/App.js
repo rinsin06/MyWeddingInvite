@@ -8,6 +8,7 @@ import TravelSection from "./Components/TravelSection";
 import VenueCarousel from "./Components/VenueCarousel";
 import WeddingSchedule from "./Components/WeddingSchedule";
 import Wishes from "./Components/Wishes";
+import CoupleIntro from "./Components/CoupleIntro";
 
 export default function App() {
   const doodles = ["💍", "💖", "🌸", "✨", "🥂", "💫", "🎀", "🌷"];
@@ -183,6 +184,11 @@ export default function App() {
       {/* INVITE & VENUE SECTIONS */}
       <Box id="invite" sx={{ backgroundColor: "#FFFFFF" }}>
         <InviteSection />
+
+      </Box>
+
+      <Box id="coupleintro" sx={{ backgroundColor: "#FFFFFF" }}>
+        <CoupleIntro />
 
       </Box>
 

@@ -8,6 +8,7 @@ import { useState } from "react";
 const sections = [
   { id: "hero", label: "Home" },
   { id: "invite", label: "Invitation" },
+  { id: "couple", label: "Meet the couple" },
   { id: "story", label: "Our Story" },
   { id: "venue", label: "Venue" },
   { id: "schedule", label: "Schedule" },
@@ -78,7 +79,7 @@ export default function SideMenu() {
               backdropFilter: "blur(20px)",
               display: "flex",
               flexDirection: "column",
-              overflow: "hidden",
+              overflow: "auto",
             }}
           >
             {/* Gold Glow */}
@@ -123,9 +124,16 @@ export default function SideMenu() {
             <Box
               sx={{
                 flex: 1,
-                overflowY: "hidden",
+                overflowY: "auto",
                 px: 3,
                 pb: 6,
+
+                // ✅ Hide scrollbar for all browsers
+                scrollbarWidth: "none", // Firefox
+                msOverflowStyle: "none", // IE and Edge
+                "&::-webkit-scrollbar": {
+                  display: "none", // Chrome, Safari
+                },
               }}
             >
               <List>
