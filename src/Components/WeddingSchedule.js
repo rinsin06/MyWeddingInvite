@@ -1,10 +1,15 @@
 // src/components/WeddingScheduleBook.jsx
-import React, { useState, useEffect } from "react";
-import { Box, Typography, useMediaQuery, Button } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Box,
+  Typography,
+  useMediaQuery,
+  Button,
+} from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
-import SwipeableViews from "react-swipeable-views";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import SwipeableViews from "react-swipeable-views";
 
 const pages = [
   {
@@ -13,9 +18,9 @@ const pages = [
     venue: "Tony Vilasam",
     events: [
       { time: "4:00 PM", event: "Guest Arrival & Welcome Drinks" },
-      { time: "6:30 PM", event: "Madhuram Veppu(Giving sweets to the bride , which is a tradition)" },
+      { time: "6:30 PM", event: "Madhuram Veppu (traditional sweet giving)" },
       { time: "7:30 PM", event: "Dinner & Celebration" },
-      { time: "8:30 PM", event: "The Groom & Freinds Entry" },
+      { time: "8:30 PM", event: "The Groom & Friends Entry" },
       { time: "9:30 PM", event: "Music & Dance" },
     ],
     gradient: "linear-gradient(135deg, #fffdf6 0%, #fff8e6 100%)",
@@ -47,13 +52,6 @@ const WeddingScheduleBook = () => {
   const nextPage = () => setPage((p) => (p + 1) % pages.length);
   const prevPage = () => setPage((p) => (p - 1 + pages.length) % pages.length);
 
-  useEffect(() => {
-    if (isMobile) {
-      const autoFlip = setInterval(() => nextPage(), 8000);
-      return () => clearInterval(autoFlip);
-    }
-  }, [isMobile]);
-
   return (
     <Box
       sx={{
@@ -71,7 +69,7 @@ const WeddingScheduleBook = () => {
         sx={{
           mb: 6,
           fontWeight: 600,
-         fontFamily: "'Great Vibes', cursive",
+          fontFamily: "'Great Vibes', cursive",
           color: "#2F3A56",
           letterSpacing: 1,
         }}
@@ -79,77 +77,118 @@ const WeddingScheduleBook = () => {
         Celebration Schedule
       </Typography>
 
-      {/* --- Mobile Page Turn Animation --- */}
+      {/* --- Mobile Version --- */}
       {isMobile ? (
-        <Box sx={{ perspective: 1000, width: "85%", maxWidth: 380 }}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={page}
-              variants={flipVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.8 }}
-              style={{
-                borderRadius: 20,
-                overflow: "hidden",
-                background: pages[page].gradient,
-                padding: "24px 16px",
-                boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
-                transformOrigin: "center",
-              }}
-            >
-              <Typography
-                variant="h5"
-                sx={{
-                  fontFamily: "'Great Vibes', cursive",
-                  fontSize: "2rem",
-                  color: "#B8860B",
-                  mb: 1,
+        <>
+          <Box
+            sx={{
+              perspective: 1000,
+              width: "85%",
+              maxWidth: 380,
+              position: "relative",
+            }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={page}
+                variants={flipVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.8 }}
+                style={{
+                  borderRadius: 20,
+                  overflow: "hidden",
+                  background: pages[page].gradient,
+                  padding: "24px 16px",
+                  boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
+                  transformOrigin: "center",
                 }}
               >
-                {pages[page].title}
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  fontFamily: "'Poppins', sans-serif",
-                  color: "#444",
-                  mb: 2,
-                }}
-              >
-                {pages[page].date} • {pages[page].venue}
-              </Typography>
-
-              {pages[page].events.map((e, i) => (
                 <Typography
-                  key={i}
-                  variant="body1"
+                  variant="h5"
                   sx={{
-                    fontFamily: "'Playfair Display', serif",
-                    mb: 1.5,
-                    color: "#2F3A56",
+                    fontFamily: "'Great Vibes', cursive",
+                    fontSize: "2rem",
+                    color: "#B8860B",
+                    mb: 1,
+                    textAlign: "center",
                   }}
                 >
-                  <b>{e.time}</b> — {e.event}
+                  {pages[page].title}
                 </Typography>
-              ))}
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    fontFamily: "'Poppins', sans-serif",
+                    color: "#444",
+                    mb: 2,
+                    textAlign: "center",
+                  }}
+                >
+                  {pages[page].date} • {pages[page].venue}
+                </Typography>
 
-              <Typography
-                variant="body2"
+                {pages[page].events.map((e, i) => (
+                  <Typography
+                    key={i}
+                    variant="body1"
+                    sx={{
+                      fontFamily: "'Playfair Display', serif",
+                      mb: 1.5,
+                      color: "#2F3A56",
+                    }}
+                  >
+                    <b>{e.time}</b> — {e.event}
+                  </Typography>
+                ))}
+
+                <Typography
+                  variant="body2"
+                  sx={{
+                    mt: 3,
+                    fontStyle: "italic",
+                    color: "#A67C00",
+                    fontFamily: "'Great Vibes', cursive",
+                    fontSize: "1.1rem",
+                    textAlign: "center",
+                  }}
+                >
+                  “A moment to remember forever.”
+                </Typography>
+              </motion.div>
+            </AnimatePresence>
+          </Box>
+
+          {/* --- Clickable Dots --- */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mt: 2,
+              gap: 1.5,
+            }}
+          >
+            {pages.map((_, idx) => (
+              <Box
+                key={idx}
+                onClick={() => setPage(idx)}
                 sx={{
-                  mt: 3,
-                  fontStyle: "italic",
-                  color: "#A67C00",
-                  fontFamily: "'Great Vibes', cursive",
-                  fontSize: "1.1rem",
+                  width: idx === page ? 14 : 10,
+                  height: idx === page ? 14 : 10,
+                  borderRadius: "50%",
+                  backgroundColor: idx === page ? "#B8860B" : "#D3C09F",
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  "&:hover": {
+                    transform: "scale(1.2)",
+                    backgroundColor: "#B8860B",
+                  },
                 }}
-              >
-                “A moment to remember forever.”
-              </Typography>
-            </motion.div>
-          </AnimatePresence>
-        </Box>
+              />
+            ))}
+          </Box>
+        </>
       ) : (
         /* --- Desktop Swipe Layout --- */
         <Box sx={{ width: "70%", maxWidth: 900 }}>
@@ -208,12 +247,7 @@ const WeddingScheduleBook = () => {
           </SwipeableViews>
 
           <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              mt: 4,
-              gap: 2,
-            }}
+            sx={{ display: "flex", justifyContent: "center", mt: 4, gap: 2 }}
           >
             <Button
               onClick={prevPage}
