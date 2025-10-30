@@ -58,16 +58,23 @@ const InviteSection = () => {
             variant="body1"
             sx={{
               color: "#5d4037",
-              fontFamily: "'Poppins', sans-serif",
+              fontFamily: "'Great Vibes', cursive",
               lineHeight: 1.8,
-              fontSize: { xs: "1rem", md: "1.1rem" },
+              fontSize: { xs: "1.2rem", md: "1.2rem" },
               maxWidth: "500px",
               mx: { xs: "auto", md: 0 },
             }}
           >
-            With great joy in our hearts, we invite you to share in the warmth
-            and love of our wedding day. Come join us as we begin our forever
-            journey together.
+            We invite you to be a part of our most cherished day —
+            the moment two souls promise to walk together through every sunrise and sunset.
+
+            Your presence will make our celebration complete,
+            as we weave laughter, memories, and dreams
+            into the tapestry of our forever.
+
+            Come, witness the beginning of our beautiful journey —
+            where love meets eternity,
+            and every heartbeat whispers “always.” 💖
           </Typography>
         </Box>
 

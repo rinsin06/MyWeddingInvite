@@ -4,47 +4,107 @@ import PhotoUpload from "./Components/PhotoUpload";
 import Wishes from "./Components/Wishes";
 import InviteSection from "./Components/InviteSection";
 import VenueCarousel from "./Components/VenueCarousel";
+import SideMenu from "./Components/SideMenu"; // ✅ Importing the Side Menu
+import WeddingSchedule from "./Components/WeddingSchedule";
+import OurStory from "./Components/ourstory";
+import TravelSection from "./Components/TravelSection";
+import FAQSection from "./Components/FAQSection";
 
 export default function App() {
+  const doodles = ["💍", "💖", "🌸", "✨", "🥂", "💫", "🎀", "🌷"];
+
   return (
-    <Box sx={{ fontFamily: "Inter, 'Playfair Display', serif", backgroundColor: "#FFFFFF" }}>
+    <Box sx={{ backgroundColor: "#FFFFFF", fontFamily: "'Quicksand', 'Poppins', sans-serif" }}>
+      {/* ✅ Floating Side Menu */}
+      <SideMenu />
+
       {/* HERO SECTION */}
-      <Box sx={{ position: "relative", minHeight: "100vh" }}>
+      <Box id="hero" sx={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
         {/* Background Image */}
-        <Box
-          sx={{
+        <motion.div
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.8 }}
+          style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundImage: `url("/pexels-annetnavi-792777.jpg")`,
+            inset: 0,
+            backgroundImage: `url("\wedding.jpg")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
+            filter: "grayscale(25%) brightness(0.85)",
             zIndex: 0,
-            filter: "grayscale(30%) brightness(0.8)",
           }}
         />
 
-        {/* Elegant Overlay */}
+        {/* Overlay */}
         <Box
           sx={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
+            inset: 0,
             background: "linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(47,58,86,0.4))",
             zIndex: 1,
           }}
         />
+
+        {/* Floating Doodles */}
+        {doodles.map((icon, i) => (
+          <motion.div
+            key={i}
+            initial={{ y: "100vh", x: Math.random() * window.innerWidth }}
+            animate={{
+              y: ["100vh", "-10vh"],
+              x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
+              rotate: [0, 360],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: 12 + Math.random() * 10,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+              ease: "easeInOut",
+            }}
+            style={{
+              position: "absolute",
+              fontSize: `${24 + Math.random() * 24}px`,
+              zIndex: 2,
+              color: "#D4AF37",
+            }}
+          >
+            {icon}
+          </motion.div>
+        ))}
+
+        {/* Sparkle Particles */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={`sparkle-${i}`}
+            initial={{ y: "110vh", x: Math.random() * window.innerWidth, opacity: 0 }}
+            animate={{
+              y: ["110vh", "-10vh"],
+              opacity: [0.1, 0.6, 0.1],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 10,
+              repeat: Infinity,
+              delay: Math.random() * 8,
+            }}
+            style={{
+              position: "absolute",
+              width: "6px",
+              height: "6px",
+              borderRadius: "50%",
+              backgroundColor: "#D4AF37",
+              zIndex: 1,
+            }}
+          />
+        ))}
 
         {/* Hero Content */}
         <Container
           maxWidth="md"
           sx={{
             position: "relative",
-            zIndex: 2,
+            zIndex: 3,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -56,18 +116,28 @@ export default function App() {
           <motion.div initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
             <Typography
               variant="h5"
-              sx={{ mb: 2, fontWeight: 300, letterSpacing: 3, color: "rgba(255,255,255,0.85)" }}
+              sx={{
+                mb: 2,
+                fontWeight: 300,
+                letterSpacing: 3,
+                color: "rgba(255,255,255,0.9)",
+                fontFamily: "'Great Vibes', cursive",
+              }}
             >
               Together Forever
             </Typography>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2 }}>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.5 }}
+          >
             <Typography
               variant="h1"
               sx={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: { xs: "3rem", md: "6rem" },
+                fontFamily: "'Great Vibes', cursive",
+                fontSize: { xs: "3.5rem", md: "6rem" },
                 color: "#D4AF37",
                 textShadow: "1px 1px 15px rgba(0,0,0,0.5)",
               }}
@@ -77,79 +147,69 @@ export default function App() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6, duration: 1 }}
             style={{ display: "flex", alignItems: "center", gap: 24, marginTop: 24 }}
           >
-            <Typography variant="h6" sx={{ fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
+            <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.9)", fontWeight: 600, }}>
               DECEMBER
             </Typography>
             <Typography variant="h2" sx={{ fontWeight: "bold", color: "#D4AF37" }}>
               29
             </Typography>
-            <Typography variant="h6" sx={{ fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
+            <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.9)", fontWeight: 600 }}>
               2025
             </Typography>
           </motion.div>
 
-          {/* Subtext */}
-          <Typography
-            variant="body1"
-            sx={{
-              mt: 3,
-              color: "rgba(255,255,255,0.85)",
-              fontStyle: "italic",
-              maxWidth: "600px",
-            }}
-          >
-            “We can’t wait to celebrate our forever with you.”
-          </Typography>
-
-          {/* CTA Button */}
-          <motion.div whileHover={{ scale: 1.05 }} style={{ marginTop: 40 }}>
-            <Button
-              href="#wishes"
-              variant="contained"
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
+            <Typography
+              variant="body1"
               sx={{
-                background: "linear-gradient(45deg, #D4AF37, #EADCA6)",
-                color: "#2F3A56",
-                px: 6,
-                py: 1.4,
-                borderRadius: "40px",
-                fontWeight: "bold",
-                fontSize: "1rem",
-                letterSpacing: 1,
-                boxShadow: "0 6px 20px rgba(212,175,55,0.3)",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  background: "linear-gradient(45deg, #E6D28A, #C9A74A)",
-                  boxShadow: "0 8px 25px rgba(212,175,55,0.5)",
-                },
+                mt: 3,
+                color: "rgba(255,255,255,0.9)",
+                fontStyle: "italic",
+                fontFamily: "'Quicksand', sans-serif",
+                fontSize: "1.1rem",
               }}
             >
-              Send Wishes
-            </Button>
+              “Come, celebrate the laughter, love, and the magic of forever with us.”
+            </Typography>
           </motion.div>
+
         </Container>
       </Box>
 
       {/* INVITE & VENUE SECTIONS */}
-      <Box sx={{ backgroundColor: "#FFFFFF", py: 8 }}>
+      <Box id="invite" sx={{ backgroundColor: "#FFFFFF" }}>
         <InviteSection />
+
+      </Box>
+
+      <Box id="story" sx={{ backgroundColor: "#FFFFFF" }}>
+        <OurStory />
+      </Box>
+      <Box id="venue">
         <VenueCarousel />
       </Box>
 
-      {/* WISHES & PHOTOS SECTION */}
-      <Box
+      <Box id="schedule" sx={{ backgroundColor: "#FFFFFF" }}>
+        <WeddingSchedule />
+      </Box>
+
+      <Box id="travel" sx={{ backgroundColor: "#FFFFFF" }}>
+        <TravelSection />
+      </Box>
+
+      {/* WISHES SECTION */}
+      <motion.div
         id="wishes"
-        sx={{
-          position: "relative",
-          zIndex: 2,
-          backgroundColor: "#F8F8F9",
-          color: "#1E1E1E",
-          py: { xs: 8, md: 12 },
-        }}
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        viewport={{ once: true }}
+        style={{ backgroundColor: "#F8F8F9", padding: "6rem 0" }}
       >
         <Container maxWidth="md" sx={{ textAlign: "center" }}>
           <Typography
@@ -158,29 +218,15 @@ export default function App() {
               fontWeight: 700,
               mb: 6,
               color: "#2F3A56",
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: "'Great Vibes', cursive",
+              letterSpacing: 1,
             }}
           >
             Share Your Memories & Wishes
           </Typography>
 
-          {/* Photo Upload */}
-          <Paper
-            elevation={8}
-            sx={{
-              p: 4,
-              mb: 6,
-              borderRadius: "20px",
-              background: "linear-gradient(145deg, #FFFFFF, #F3F3F3)",
-              boxShadow: "0 5px 25px rgba(0,0,0,0.05)",
-            }}
-          >
-            <PhotoUpload />
-          </Paper>
-
           <Divider sx={{ my: 6, borderColor: "#D4AF37", width: "50%", mx: "auto" }} />
 
-          {/* Wishes */}
           <Paper
             elevation={6}
             sx={{
@@ -193,6 +239,9 @@ export default function App() {
             <Wishes />
           </Paper>
         </Container>
+      </motion.div>
+      <Box id="faq" sx={{ backgroundColor: "#FFFFFF" }}>
+        <FAQSection />
       </Box>
     </Box>
   );
