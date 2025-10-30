@@ -9,9 +9,18 @@ import VenueCarousel from "./Components/VenueCarousel";
 import WeddingSchedule from "./Components/WeddingSchedule";
 import Wishes from "./Components/Wishes";
 import CoupleIntro from "./Components/CoupleIntro";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const doodles = ["💍", "💖", "🌸", "✨", "🥂", "💫", "🎀", "🌷"];
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // check immediately on load
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <Box sx={{ backgroundColor: "#FFFFFF", fontFamily: "'Quicksand', 'Poppins', sans-serif" }}>
@@ -28,9 +37,11 @@ export default function App() {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url("wedding2.png")`,
+           backgroundImage: isMobile
+          ? `url("wedding2.png")`   // 🌸 mobile version
+          : `url("wedding3.png")`, // 💫 desktop version
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "center top",
             filter: "grayscale(25%) brightness(0.85)",
             zIndex: 0,
           }}
