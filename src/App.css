@@ -7,6 +7,16 @@
   height: 40vmin;
   pointer-events: none;
 }
+/* Hide scrollbar but allow scrolling */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

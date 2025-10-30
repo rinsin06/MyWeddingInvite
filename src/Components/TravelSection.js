@@ -143,7 +143,7 @@ export default function TravelSection() {
             }}
           >
             From Kollam, follow the location provided on the venue section
-            to the wedding venue.
+            to reach both venues comfortably.
           </Typography>
         </Box>
 
