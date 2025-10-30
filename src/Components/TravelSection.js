@@ -217,7 +217,7 @@ export default function TravelSection() {
                   The venue is just a short drive away, ensuring comfort and
                   ease for your travel. View the location on{" "}
                   <a
-                    href="https://share.google/6Zl1FsTkX0kxBzlm8"
+                    href="https://maps.app.goo.gl/DzVLULRKrRDZAMRQA"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
