@@ -12,7 +12,7 @@ import CoupleIntro from "./Components/CoupleIntro";
 import { useEffect, useState } from "react";
 
 export default function App() {
-  const doodles = ["💍", "💖", "🌸", "✨", "🥂", "💫", "🎀", "🌷"];
+  
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -56,34 +56,6 @@ export default function App() {
             zIndex: 1,
           }}
         />
-
-        {/* Floating Doodles */}
-        {doodles.map((icon, i) => (
-          <motion.div
-            key={i}
-            initial={{ y: "100vh", x: Math.random() * window.innerWidth }}
-            animate={{
-              y: ["100vh", "-10vh"],
-              x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
-              rotate: [0, 360],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: 12 + Math.random() * 10,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-              ease: "easeInOut",
-            }}
-            style={{
-              position: "absolute",
-              fontSize: `${24 + Math.random() * 24}px`,
-              zIndex: 2,
-              color: "#D4AF37",
-            }}
-          >
-            {icon}
-          </motion.div>
-        ))}
 
         {/* Sparkle Particles */}
         {[...Array(15)].map((_, i) => (
