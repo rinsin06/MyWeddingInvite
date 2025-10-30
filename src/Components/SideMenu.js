@@ -14,7 +14,6 @@ const sections = [
   { id: "travel", label: "Travel & Stay" },
   { id: "wishes", label: "Wishes" },
   { id: "faq", label: "FAQ" },
-  { id: "faq", label: "FAQ" },{ id: "faq", label: "FAQ" },{ id: "faq", label: "FAQ" },
 ];
 
 export default function SideMenu() {
