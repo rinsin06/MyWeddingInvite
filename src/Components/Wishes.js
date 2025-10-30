@@ -1,22 +1,22 @@
+import CloseIcon from "@mui/icons-material/Close";
 import {
+  Alert,
   Box,
   Button,
-  Paper,
-  Stack,
-  Typography,
-  Divider,
   Dialog,
-  DialogTitle,
-  DialogContent,
   DialogActions,
-  TextField,
-  Snackbar,
-  Alert,
+  DialogContent,
+  DialogTitle,
+  Divider,
   IconButton,
+  Paper,
+  Snackbar,
+  Stack,
+  TextField,
+  Typography,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import { onValue, push, ref, set } from "firebase/database";
 import { useEffect, useState } from "react";
-import { ref, push, set, onValue } from "firebase/database";
 import { db } from "../firebase";
 import PhotoUpload from "./PhotoUpload"; // ✅ Import PhotoUpload component
 

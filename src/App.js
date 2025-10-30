@@ -1,14 +1,13 @@
-import { Box, Button, Container, Divider, Paper, Typography } from "@mui/material";
+import { Box, Container, Divider, Paper, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import PhotoUpload from "./Components/PhotoUpload";
-import Wishes from "./Components/Wishes";
-import InviteSection from "./Components/InviteSection";
-import VenueCarousel from "./Components/VenueCarousel";
-import SideMenu from "./Components/SideMenu"; // ✅ Importing the Side Menu
-import WeddingSchedule from "./Components/WeddingSchedule";
-import OurStory from "./Components/ourstory";
-import TravelSection from "./Components/TravelSection";
 import FAQSection from "./Components/FAQSection";
+import InviteSection from "./Components/InviteSection";
+import OurStory from "./Components/ourstory";
+import SideMenu from "./Components/SideMenu"; // ✅ Importing the Side Menu
+import TravelSection from "./Components/TravelSection";
+import VenueCarousel from "./Components/VenueCarousel";
+import WeddingSchedule from "./Components/WeddingSchedule";
+import Wishes from "./Components/Wishes";
 
 export default function App() {
   const doodles = ["💍", "💖", "🌸", "✨", "🥂", "💫", "🎀", "🌷"];
@@ -28,7 +27,7 @@ export default function App() {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url("\wedding.jpg")`,
+            backgroundImage: `url("wedding.jpg")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             filter: "grayscale(25%) brightness(0.85)",

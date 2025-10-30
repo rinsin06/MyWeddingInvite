@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  TextField,
-  Stack,
-  Snackbar,
-  Alert,
-} from "@mui/material";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import { ref, push, onValue } from "firebase/database";
+import {
+    Alert,
+    Box,
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    Snackbar,
+    Stack,
+    TextField,
+    Typography,
+} from "@mui/material";
+import { onValue, push, ref } from "firebase/database";
+import { useEffect, useState } from "react";
 import { db } from "../firebase"; // adjust path as needed
 
 const StayVote = () => {

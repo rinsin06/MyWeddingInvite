@@ -1,43 +1,18 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  Divider,
-  Card,
-  CardContent,
-  Grid,
-  IconButton,
-  CardMedia,
-} from "@mui/material";
-import { motion, AnimatePresence } from "framer-motion";
-import TrainIcon from "@mui/icons-material/Train";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import RoomIcon from "@mui/icons-material/Room";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import TrainIcon from "@mui/icons-material/Train";
+import {
+    Box,
+    Card,
+    CardContent,
+    Divider,
+    Grid,
+    Typography
+} from "@mui/material";
 import StayCarousel from "./StayCarousel";
 import StayVote from "./StayVote";
 
 export default function TravelSection() {
-  const stayImages = [
-    "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzN2eE_VFSVg6JYg1OD-ZM2LSFj1xyIRBak5U9V-uOCkVWVlYlgPnSJsb9WnjdknYl0QYvPEIljaXgkKZjo9we6E5BpN6bv6gnH5MkJOENg6EPzafdZ_oBE2EXA7eNAZSml1dd1jUnmXTyW=s1360-w1360-h1020-rw",
-    "https://images.unsplash.com/photo-1560067174-894b1a33a46f?auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1600585154603-0468eab2e1d8?auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1000&q=80",
-  ];
-
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
-
-  const nextImage = () => {
-    setDirection(1);
-    setCurrent((prev) => (prev + 1) % stayImages.length);
-  };
-
-  const prevImage = () => {
-    setDirection(-1);
-    setCurrent((prev) => (prev === 0 ? stayImages.length - 1 : prev - 1));
-  };
 
   return (
     <Box

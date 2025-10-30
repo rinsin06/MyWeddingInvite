@@ -1,16 +1,16 @@
 // VenueCarouselMUI.jsx
-import React, { useState, useEffect } from "react";
+import RoomIcon from "@mui/icons-material/Room";
 import {
   Box,
-  Typography,
   Card,
-  CardMedia,
   CardContent,
+  CardMedia,
   Grid,
+  Typography,
   useMediaQuery,
 } from "@mui/material";
-import { motion, AnimatePresence } from "framer-motion";
-import RoomIcon from "@mui/icons-material/Room";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const venues = [
   {

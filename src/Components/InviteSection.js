@@ -1,5 +1,4 @@
-import React from "react";
-import { Box, Typography, Fade } from "@mui/material";
+import { Box, Fade, Typography } from "@mui/material";
 
 const InviteSection = () => {
   return (
