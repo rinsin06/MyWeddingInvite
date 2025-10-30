@@ -53,6 +53,17 @@ const VenueCarouselMUI = () => {
     setCurrentIndex((prev) => (prev - 1 + venues.length) % venues.length);
   };
 
+  const handleDragEnd = (event, info) => {
+    const swipe = info.offset.x;
+    const swipeThreshold = 80; // Minimum swipe distance to trigger a change
+
+    if (swipe < -swipeThreshold) {
+      nextSlide();
+    } else if (swipe > swipeThreshold) {
+      prevSlide();
+    }
+  };
+
   const MapLink = ({ url }) => (
     <motion.a
       href={url}
@@ -86,7 +97,6 @@ const VenueCarouselMUI = () => {
         position: "relative",
       }}
     >
-      {/* Section Title */}
       <Typography
         variant="h3"
         sx={{
@@ -115,7 +125,6 @@ const VenueCarouselMUI = () => {
       {/* --- Mobile View --- */}
       {isSmallScreen ? (
         <Box sx={{ maxWidth: 360, mx: "auto", position: "relative" }}>
-          {/* Slide */}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -123,8 +132,11 @@ const VenueCarouselMUI = () => {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.7 }}
-              style={{ position: "relative" }}
+              transition={{ duration: 0.6 }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={handleDragEnd}
+              style={{ position: "relative", cursor: "grab" }}
             >
               <Card
                 elevation={10}
@@ -140,9 +152,7 @@ const VenueCarouselMUI = () => {
                   height="250"
                   image={venues[currentIndex].image}
                   alt={venues[currentIndex].title}
-                  sx={{
-                    objectFit: "cover",
-                  }}
+                  sx={{ objectFit: "cover" }}
                 />
                 <CardContent>
                   <Typography
@@ -182,12 +192,7 @@ const VenueCarouselMUI = () => {
           </AnimatePresence>
 
           {/* Dots */}
-          <Stack
-            direction="row"
-            spacing={1}
-            justifyContent="center"
-            sx={{ mt: 2 }}
-          >
+          <Stack direction="row" spacing={1} justifyContent="center" sx={{ mt: 2 }}>
             {venues.map((_, i) => (
               <Box
                 key={i}
